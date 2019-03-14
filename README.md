@@ -19,7 +19,7 @@ for the use of GPUs where available.
 To get this repo, and to install all of the dependencies, run the following commands on OSX or Ubuntu.
 
 ```bash
-git clone https://github.com/hkingravi/funcobspy.git  # clone repo (https)
+git clone git@github.com:hkingravi/funcobs-pytorch.git  # clone repo (ssh)
 cd funcobspy
 virtualenv -p python3 funcenv  # create virtual environment with all the of dependencies required
 source funcenv/bin/activate  # activate virtual environment
