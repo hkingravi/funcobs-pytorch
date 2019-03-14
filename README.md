@@ -11,7 +11,8 @@ and so on. This repository will add code where the generator for the function
 space will be generalized, and will include deep neural networks.
 
 To achieve fast performance, we use a PyTorch backend where possible, which allows
-for the use of GPUs where available.  
+for the use of GPUs where available. I recommend installing all dependencies using
+conda.
 
 
 # Setup
@@ -19,35 +20,35 @@ for the use of GPUs where available.
 To get this repo, and to install all of the dependencies, run the following commands on OSX or Ubuntu.
 
 ```bash
-git clone git@github.com:hkingravi/funcobs-pytorch.git  # clone repo (ssh)
-cd funcobspy
-virtualenv -p python3 funcenv  # create virtual environment with all the of dependencies required
-source funcenv/bin/activate  # activate virtual environment
-pip install -U virtualenv  # upgrade virtualenv
-pip install -U pip  # upgrade pip: these upgrades are to avoid weird bugs in some installs
-chmod +x install_dependencies.sh  # make install script an executable
-./install_dependencies.sh  # install all reqs using pip, fix matplotlib backend issue
+git clone https://github.com/hkingravi/funcobs-pytorch.git  # clone repo (https)
+cd funcobs-pytorch
+conda create --name fobsp  # create conda env
+conda activate fobsp  # activate virtual environment and install deps
+while read requirement; do conda install --yes $requirement; done < requirements.txt  
 python setup.py develop  #  install funcobspy in a development environment
 ```
 
-Ensure that your Keras library is using the Theano backend by typing
-```bash
-nano ~/.keras/keras.json
-```
-and changing the "backend" field to "theano".
-
-Now, when you run your python code, you can either activate the virtualenv via the command line
+Now, when you run your python code, you can always either activate the virtualenv via the command line
 with the command 
 ```bash
-source funcenv/bin/activate
+conda activate fobsp
 ```
 in the same directory as funcenv, or you can configure your Python IDE to use this interpreter. That
-way, all the library requirements will be met. If you want to roll your own version, just look at the
-requirements.txt file. 
+way, all the library requirements will be met. Generally, the conda env can be found in
+```bash
+~/anaconda3/envs/fobsp/bin/python3
+```
 
 In Python 3.x on Ubuntu, sometimes you will need to fix the Tkinter module, as follows:
 ```bash
 sudo apt-get install python3-tk
 ```
 
+If you want to use GPUs, make sure your CUDA drivers are installed! A quick check for this is 
+to open an ipython terminal, and type
+```python
+import torch
+torch.cuda.is_available()
+```
+If this is False, then you'll have to go through the install process for CUDA carefully. 
 
