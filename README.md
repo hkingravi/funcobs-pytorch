@@ -10,7 +10,11 @@ areas with a patrolling enemy, disease propagation in urban population centers,
 and so on. This repository will add code where the generator for the function 
 space will be generalized, and will include deep neural networks.
 
-To achieve fast performance, we use a PyTorch backend where possible, which allows
+The goal of this package is to strike a balance between reproducibility of research
+and speed. Due to the former requirement, a lot of the code is written in-house,
+even though better implementations probably exist somewhere else (see e.g. GPyTorch,
+a recent package for efficient training of Gaussian processes). To 
+achieve fast performance, we use a PyTorch backend where possible, which allows
 for the use of GPUs where available. I recommend installing all dependencies using
 conda.
 
@@ -52,3 +56,11 @@ print(torch.cuda.is_available())
 ```
 If this is False, then you'll have to go through the install process for CUDA carefully. 
 
+# References
+* Hassan A. Kingravi, Harshal Maske, and Girish Chowdhary.
+  [Kernel Observers: Systems-Theoretic Modeling and Inference of Spatiotemporally Evolving Processes](https://papers.nips.cc/paper/6189-kernel-observers-systems-theoretic-modeling-and-inference-of-spatiotemporally-evolving-processes.pdf),
+   Advances in Neural Information Processing Systems 29 (NeurIPS 2016).
+* Hassan A. Kingravi, Harshal Maske, and Girish Chowdhary.
+  [A Systems-Theoretic Approach for Data-Driven Modeling and Control
+    of Spatiotemporally Evolving Processes](http://hassanakingravi.com/papers/2015/CDC_2015.pdf),
+   IEEE Conference on Decision and Control (2015).
