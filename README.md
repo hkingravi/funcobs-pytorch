@@ -48,7 +48,7 @@ If you want to use GPUs, make sure your CUDA drivers are installed! A quick chec
 to open an ipython terminal, and type
 ```python
 import torch
-torch.cuda.is_available()
+print(torch.cuda.is_available())
 ```
 If this is False, then you'll have to go through the install process for CUDA carefully. 
 
