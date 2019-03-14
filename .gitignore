@@ -1,0 +1,12 @@
+*.pyc
+*.swp
+*.deb
+*.wav
+.idea
+env
+.DS_Store
+.coverage
+build
+*.png
+*.egg-info/
+
